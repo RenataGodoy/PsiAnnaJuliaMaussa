@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS e JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <title>Psicóloga Anna Júlia Maussa | CRP 07/8629</title>
 
-    <!-- FAVICON AJ -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +21,10 @@
 <!-- NAVBAR FIXA -->
 <header class="navbar">
     <div class="nav-content">
-        <h1 class="logo">Anna Júlia Maussa</h1>
+        <div style="display: flex; align-items: center;">
+            <img src="/img/logo.png" alt="Logo Anna Júlia Maussa" class="logo-img">
+            <h1 class="logo">Anna Júlia Maussa</h1>
+        </div>
         <span class="crp">CRP 07/8629</span>
 
         <nav class="nav-links">
@@ -25,6 +34,18 @@
             <a href="#areas">Atuação</a>
             <a href="#contato">Contato</a>
         </nav>
+
+        <!-- Botão mobile -->
+        <span class="menu-toggle">&#9776;</span>
+    </div>
+
+    <!-- Menu lateral mobile -->
+    <div class="mobile-menu">
+        <a href="#hero">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#terapia">Terapia</a>
+        <a href="#areas">Atuação</a>
+        <a href="#contato">Contato</a>
     </div>
 </header>
 
@@ -89,15 +110,18 @@
     </div>
 </section>
 
-<!-- AREAS -->
+<!-- AREAS + MAPA -->
 <section id="areas" class="areas container fade-in">
     <h3>Áreas de atuação</h3>
-    <div class="areas-list">
-        <div class="area-card">Ansiedade e autocobrança</div>
-        <div class="area-card">Relações afetivas e limites</div>
-        <div class="area-card">Autoconhecimento</div>
-        <div class="area-card">Luto, despedidas e mudanças</div>
-        <div class="area-card">Dores emocionais silenciosas</div>
+    <div class="areas-map-wrapper">
+        <div class="areas-list">
+            <div class="area-card">Ansiedade e autocobrança</div>
+            <div class="area-card">Relações afetivas e limites</div>
+            <div class="area-card">Autoconhecimento</div>
+            <div class="area-card">Luto, despedidas e mudanças</div>
+            <div class="area-card">Dores emocionais silenciosas</div>
+        </div>
+       
     </div>
 </section>
 
@@ -129,6 +153,11 @@
             </div>
         </div>
     </div>
+     <div><h3>Nosso consultório:</h3>h3></strong></p>
+            <p>Rua Rui Barbosa, 499, sala 214 Centro - Cabo Frio - RJ</p>
+            <p>CEP: 28905-020</p>
+            <div id="map" class="map"></div>
+        </div>
 </section>
 
 <!-- CONTATO -->
@@ -140,8 +169,457 @@
 
 <!-- FOOTER -->
 <footer class="footer fade-in">
-    <p>Psicóloga Anna Júlia Maussa – CRP 07/8629 • Cabofrio – RJ</p>
+    <p>Psicóloga Anna Júlia Maussa – CRP 05/78629 •</p>
+    <p>Rua Rui Barbosa, 4990, Centro - Cabo Frio - RJ </p>
+    <p>CEP: 28905020</p>
 </footer>
 
+<!-- JS -->
+<script>
+    // MENU MOBILE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        if(mobileMenu.style.left === "0px") {
+            mobileMenu.style.left = "-250px";
+        } else {
+            mobileMenu.style.left = "0px";
+        }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.style.left = "-250px";
+        });
+    });
+
+    // ANIMAÇÃO AO SCROLL
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // MAPA LEAFLET
+    const map = L.map('map').setView([-22.8876, -42.0261], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    L.marker([-22.8876, -42.0261]).addTo(map)
+        .bindPopup('<b>Consultório</b><br>Rua Rui Barbosa, 4990, Centro - Cabo Frio - RJ<br>CEP: 28905-020')
+        .openPopup();
+</script>
+<style>
+    /* ======================================
+   RESET E ESTILOS GERAIS
+====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #3a2c4c;
+    background-color: #fff6eb; /* fundo alegre e suave */
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* BOTÕES */
+.btn {
+    display: inline-block;
+    background-color: #fbbf6b;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #fca94c;
+    transform: translateY(-2px);
+}
+
+/* ======================================
+   NAVBAR FIXA
+====================================== */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    z-index: 999;
+    padding: 12px 0;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 12px;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fca94c;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.crp {
+    font-size: 0.9rem;
+    color: #6c4ea0;
+}
+
+/* MENU MOBILE */
+.menu-toggle {
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: block;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #f7e9df;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: left 0.3s ease;
+    z-index: 998;
+}
+
+/* ======================================
+   HERO
+====================================== */
+.hero {
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+.hero img.profile {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(108,78,160,0.15);
+    animation: float 4s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    color: #5a4a84;
+    margin-bottom: 15px;
+}
+
+.micro {
+    margin-top: 15px;
+    font-style: italic;
+    color: #9b87b5;
+}
+
+/* ======================================
+   INTRO
+====================================== */
+.intro {
+    padding: 50px 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* ======================================
+   SOBRE
+====================================== */
+.sobre-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 0;
+}
+
+.sobre-img {
+    width: 250px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(108,78,160,0.15);
+}
+
+.sobre-text {
+    max-width: 600px;
+}
+
+.sobre-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* ======================================
+   TERAPIA
+====================================== */
+.terapia-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 0;
+}
+
+.terapia-text {
+    max-width: 600px;
+}
+
+.terapia-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(108,78,160,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.terapia-img {
+    width: 250px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(108,78,160,0.15);
+}
+
+/* ======================================
+   AREAS + MAPA
+====================================== */
+.areas {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #fef5eb;
+}
+
+.areas h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.areas-map-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(108,78,160,0.2);
+}
+
+/* ======================================
+   DEPOIMENTOS
+====================================== */
+.depoimentos {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #fff6eb;
+}
+
+.depoimentos h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.dep-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dep-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f6f0fc;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(108,78,160,0.08);
+    font-size: 0.95rem;
+}
+
+.dep-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dep-text p {
+    font-style: italic;
+    color: #333;
+}
+
+.dep-text span {
+    font-weight: bold;
+    color: #8b73b3;
+}
+
+/* ======================================
+   CONTATO
+====================================== */
+.contato {
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* ======================================
+   FOOTER
+====================================== */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    background: #f3eaff;
+    color: #5a4a84;
+}
+
+/* ======================================
+   ANIMAÇÕES ENTRE SECTIONS
+====================================== */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section.fade-in {
+    animation: fadeUp 1s ease forwards;
+}
+
+section.fade-in:nth-of-type(1) { animation-delay: 0.2s; }
+section.fade-in:nth-of-type(2) { animation-delay: 0.4s; }
+section.fade-in:nth-of-type(3) { animation-delay: 0.6s; }
+section.fade-in:nth-of-type(4) { animation-delay: 0.8s; }
+section.fade-in:nth-of-type(5) { animation-delay: 1s; }
+section.fade-in:nth-of-type(6) { animation-delay: 1.2s; }
+
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================
+   MOBILE FIRST
+====================================== */
+@media (min-width: 768px) {
+    .sobre-content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .terapia-content {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .cards {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .areas-map-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    #map {
+        height: 350px;
+        flex: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .sobre-text, .terapia-text {
+        max-width: 650px;
+    }
+}
+
+</style>
 </body>
 </html>
