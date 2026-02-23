@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <title>Psicóloga Anna Júlia Maussa | CRP 07/8629</title>
+    <title>Psicóloga Anna Júlia Maussa | CRP 05/78629</title>
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -25,7 +25,7 @@
             <img src="/img/logo.png" alt="Logo Anna Júlia Maussa" class="logo-img">
             <h3 class="logo">Psicologa Anna Júlia</h3>
         </div>
-        <span class="crp">CRP 07/8629</span>
+        <span class="crp">CRP 05/78629</span>
 
         <nav class="nav-links">
             <a href="#hero">Início</a>
@@ -157,7 +157,7 @@
     <div class="consultorio">
         <h3>Nosso consultório</h3>
         <p>Rua Rui Barbosa, 499, sala 214, Centro - Cabo Frio - RJ</p>
-        <p>CEP: 28905-020</p>
+        <p>CEP: 28907170</p>
         <div id="map" class="map"></div>
     </div>
 </section>
@@ -171,9 +171,9 @@
 
 <!-- FOOTER -->
 <footer class="footer fade-in">
-    <p>Psicóloga Anna Júlia Maussa – CRP 0578629</p>
+    <p>Psicóloga Anna Júlia Maussa – CRP 05/78629</p>
     <p>Rua Rui Barbosa, 499, Centro - Cabo Frio - RJ</p>
-    <p>CEP: 28905-020</p>
+    <p>CEP: 28907170</p>
 </footer>
 
 <!-- JS -->
@@ -203,20 +203,21 @@
     sections.forEach(section => observer.observe(section));
 
     // MAPA LEAFLET
-    const map = L.map('map').setView([-22.88760, -42.02610], 17);
+    const map = L.map('map').setView([-22.88903, -42.02633], 18);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    L.marker([-22.88760, -42.02610])
+    L.marker([-22.88903, -42.02633])
         .addTo(map)
         .bindPopup(`
             <b>Consultório</b><br>
             Rua Rui Barbosa, 499, sala 214<br>
             Centro - Cabo Frio - RJ<br>
-            CEP: 28905-020
-        `);
+            CEP: 28907170
+        `)
+        .openPopup(); 
 </script>
 
 </body>
