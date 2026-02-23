@@ -23,7 +23,7 @@
     <div class="nav-content">
         <div style="display: flex; align-items: center;">
             <img src="/img/logo.png" alt="Logo Anna Júlia Maussa" class="logo-img">
-            <h1 class="logo">Anna Júlia Maussa</h1>
+            <h3 class="logo">Psicologa Anna Júlia</h3>
         </div>
         <span class="crp">CRP 07/8629</span>
 
@@ -35,9 +35,11 @@
             <a href="#contato">Contato</a>
         </nav>
 
+        <!-- Botão mobile -->
         <span class="menu-toggle">&#9776;</span>
     </div>
 
+    <!-- Menu lateral mobile -->
     <div class="mobile-menu">
         <a href="#hero">Início</a>
         <a href="#sobre">Sobre</a>
@@ -53,7 +55,7 @@
         <img src="/img/annajulia1.jpeg" alt="Psicóloga" class="profile">
         <div class="hero-text">
             <h2>Você não precisa dar conta de tudo sozinha.</h2>
-            <p>A psicoterapia é um espaço de acolhimento, cuidado e reconexão com quem você é — no seu tempo, do seu jeito.</p>
+            <p>A psicoterapia é um espaço de acolhimento, cuidado e reconexão com quem você é, no seu tempo, do seu jeito.</p>
             <a href="https://wa.me/5521995410190" class="btn">Agendar uma conversa</a>
             <p class="micro">Respire. Você chegou.</p>
         </div>
@@ -63,7 +65,7 @@
 <!-- INTRO -->
 <section class="intro container fade-in">
     <p>Nem toda dor é visível. Nem toda angústia tem nome. Mas toda experiência emocional merece atenção e cuidado.</p>
-    <p>Aqui, o processo terapêutico acontece com respeito, profundidade e acolhimento — sem julgamentos e sem pressa.</p>
+    <p>Aqui, o processo terapêutico acontece com respeito, profundidade e acolhimento, sem julgamentos e sem pressa.</p>
 </section>
 
 <!-- SOBRE -->
@@ -72,7 +74,7 @@
         <img src="/img/annajulia2.jpeg" alt="Psicóloga Anna Júlia" class="sobre-img">
         <div class="sobre-text">
             <h3>Sobre mim</h3>
-            <p>Sou <strong>Anna Júlia Maussa</strong>, psicóloga, e acredito que o sofrimento humano não é sinal de fraqueza — é um pedido legítimo de escuta.</p>
+            <p>Sou <strong>Anna Júlia Maussa</strong>, psicóloga, e acredito que o sofrimento humano não é sinal de fraqueza, é um pedido legítimo de escuta.</p>
             <p>Aprendi que muitas dores surgem no corpo, nas relações, na autocobrança e no cansaço de tentar ser forte o tempo todo.</p>
             <p>Meu trabalho é oferecer um espaço seguro para que você possa se escutar com mais gentileza e construir formas mais saudáveis de viver.</p>
             <p class="formacao">Experiência em atendimentos clínicos, organizacional, avaliação psicológica e área jurídica.</p>
@@ -122,15 +124,16 @@
     </div>
 </section>
 
-<!-- DEPOIMENTOS -->
+<!-- DEPOIMENTOS + MAPA -->
 <section class="depoimentos container fade-in">
     <h3>O que dizem as pacientes</h3>
+    
     <div class="dep-cards">
         <div class="dep-card">
             <img src="/img/pessoa1.png" alt="Paciente" class="dep-img">
             <div class="dep-text">
                 <p>“Aprendi a olhar para mim com mais calma e menos culpa.”</p>
-                <span>— M., 28 anos</span>
+                <span> M., 28 anos</span>
             </div>
         </div>
 
@@ -138,7 +141,7 @@
             <img src="/img/pessoa1.png" alt="Paciente" class="dep-img">
             <div class="dep-text">
                 <p>“Me senti acolhida desde o primeiro atendimento.”</p>
-                <span>— L., 33 anos</span>
+                <span> L., 33 anos</span>
             </div>
         </div>
 
@@ -146,15 +149,14 @@
             <img src="/img/pessoa1.png" alt="Paciente" class="dep-img">
             <div class="dep-text">
                 <p>“Eu não sabia que podia falar de mim com tanta liberdade.”</p>
-                <span>— R., 26 anos</span>
+                <span> R., 26 anos</span>
             </div>
         </div>
     </div>
 
-    <!-- CONSULTÓRIO + MAPA -->
     <div class="consultorio">
-        <h3>Nosso consultório:</h3>
-        <p><strong>Rua Rui Barbosa, 499, sala 214 – Centro – Cabo Frio – RJ</strong></p>
+        <h3>Nosso consultório</h3>
+        <p>Rua Rui Barbosa, 499, sala 214, Centro - Cabo Frio - RJ</p>
         <p>CEP: 28905-020</p>
         <div id="map" class="map"></div>
     </div>
@@ -169,13 +171,14 @@
 
 <!-- FOOTER -->
 <footer class="footer fade-in">
-    <p>Psicóloga Anna Júlia Maussa – CRP 07/8629</p>
-    <p>Rua Rui Barbosa, 499, sala 214, Centro – Cabo Frio – RJ</p>
+    <p>Psicóloga Anna Júlia Maussa – CRP 0578629</p>
+    <p>Rua Rui Barbosa, 499, Centro - Cabo Frio - RJ</p>
     <p>CEP: 28905-020</p>
 </footer>
 
 <!-- JS -->
 <script>
+    // MENU MOBILE
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -189,24 +192,31 @@
         });
     });
 
+    // ANIMAÇÃO AO SCROLL
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
+            if(entry.isIntersecting) entry.target.classList.add('in-view');
         });
     }, { threshold: 0.1 });
 
     sections.forEach(section => observer.observe(section));
 
-    // MAPA
-    const map = L.map('map').setView([-22.8876, -42.0261], 16);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    L.marker([-22.8876, -42.0261])
+    // MAPA LEAFLET
+    const map = L.map('map').setView([-22.88760, -42.02610], 17);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    L.marker([-22.88760, -42.02610])
         .addTo(map)
-        .bindPopup('<b>Consultório</b><br>Rua Rui Barbosa, 499, sala 214, Cabo Frio - RJ')
-        .openPopup();
+        .bindPopup(`
+            <b>Consultório</b><br>
+            Rua Rui Barbosa, 499, sala 214<br>
+            Centro - Cabo Frio - RJ<br>
+            CEP: 28905-020
+        `);
 </script>
 
 </body>
