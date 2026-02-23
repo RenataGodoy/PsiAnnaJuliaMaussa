@@ -1,6 +1,6 @@
-/* ================================
-   RESET BÁSICO
-================================ */
+/* ======================================
+   RESET E ESTILOS GERAIS
+====================================== */
 * {
     margin: 0;
     padding: 0;
@@ -8,364 +8,399 @@
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: #3a2c4c;
+    background-color: #fdfaf7;
     line-height: 1.6;
-    color: #3c3c3c;
-    background: #fdfaf7;
-    scroll-behavior: smooth;
 }
 
 .container {
-    padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* ================================
-   ANIMAÇÕES
-================================ */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-/* ================================
-   NAVBAR FIXA
-================================ */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
-    z-index: 999;
-    border-bottom: 1px solid #e7e2f3;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-}
-
-.nav-content {
-    max-width: 900px;
-    margin: auto;
-    padding: 14px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #6c5b9c;
-}
-
-.crp {
-    font-size: 0.95rem;
-    color: #777;
-}
-
-.nav-links {
-    display: none;
-}
-
-.nav-links a {
-    margin-left: 20px;
+/* LINKS */
+a {
     text-decoration: none;
-    font-weight: 500;
-    color: #5a4a84;
-    transition: 0.3s;
-}
-.nav-links a:hover {
-    color: #7d69ba;
+    color: inherit;
 }
 
-/* Compensar navbar fixa */
-body {
-    padding-top: 80px;
-}
-
-/* ================================
-   HERO
-================================ */
-.hero {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.hero .profile {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #e8e0f5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    animation: float 4s ease-in-out infinite;
-}
-
-.hero h2 {
-    font-size: 1.6rem;
-    color: #4b3a63;
-}
-
-.hero p {
-    color: #555;
-    margin: 12px 0;
-}
-
-.micro {
-    font-size: 0.9rem;
-    color: #8a7aa8;
-    margin-top: 10px;
-}
-
-/* ================================
-   BOTÃO
-================================ */
+/* BOTÕES */
 .btn {
     display: inline-block;
-    padding: 14px 22px;
-    background: #6c5b9c;
+    background-color: #cfa5ff;
     color: #fff;
+    padding: 12px 25px;
     border-radius: 12px;
     font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-    margin-top: 16px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
 }
+
 .btn:hover {
-    background: #7d69ba;
-    transform: translateY(-3px);
-}
-
-/* ================================
-   GALERIA
-================================ */
-.galeria {
-    display: grid;
-    gap: 14px;
-    margin: 30px 0;
-}
-.galeria img {
-    width: 100%;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s;
-}
-.galeria img:hover {
-    transform: scale(1.05);
-}
-
-/* ================================
-   SEÇÕES
-================================ */
-h3 {
-    font-size: 1.4rem;
-    color: #4b3a63;
-    margin-bottom: 14px;
-}
-
-.intro p, .sobre p, .terapia p {
-    margin-bottom: 12px;
-}
-
-.formacao {
-    font-style: italic;
-    color: #6c5b9c;
-}
-
-/* ================================
-   CARDS TERAPIA
-================================ */
-.cards {
-    display: grid;
-    gap: 16px;
-    margin-top: 20px;
-}
-
-.card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    text-align: center;
-}
-
-.card h4 {
-    color: #6c5b9c;
-    margin-bottom: 6px;
-}
-
-/* ================================
-   LISTAS
-================================ */
-ul {
-    list-style: none;
-}
-
-ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-/* ================================
-   DEPOIMENTOS
-================================ */
-.dep-card {
-    background: #fff;
-    padding: 18px;
-    border-radius: 14px;
-    margin-bottom: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-.dep-card span {
-    display: block;
-    margin-top: 6px;
-    color: #777;
-    font-size: 0.9rem;
-}
-
-/* ================================
-   FOOTER
-================================ */
-.footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #777;
-}
-
-/* ================================
-   MOBILE FIRST — RESPONSIVO
-================================ */
-@media (min-width: 768px) {
-
-    .nav-links {
-        display: block;
-    }
-
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .galeria {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .container {
-        max-width: 900px;
-        margin: auto;
-    }
-}
-/* ================================
-   LAYOUT HERO E SOBRE
-================================ */
-.hero-content, .sobre-content, .terapia-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.hero .profile, .sobre-img, .terapia-img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    animation: float 4s ease-in-out infinite;
-}
-
-/* TEXTO */
-.hero-text, .sobre-text, .terapia-text {
-    text-align: center;
-}
-
-.hero-text h2, .sobre-text h3, .terapia-text h3 {
-    color: #4b3a63;
-}
-
-.hero-text p, .sobre-text p, .terapia-text p {
-    color: #555;
-    margin: 8px 0;
-}
-
-/* BOTÃO */
-.btn {
-    display: inline-block;
-    padding: 14px 22px;
-    background: #6c5b9c;
-    color: #fff;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-    margin-top: 16px;
-}
-.btn:hover {
-    background: #7d69ba;
+    background-color: #b084ff;
     transform: translateY(-2px);
 }
 
-/* ================================
-   CARDS TERAPIA
-================================ */
+/* ======================================
+   NAVBAR FIXA + MENU LATERAL MOBILE
+====================================== */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    z-index: 999;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.crp {
+    font-size: 0.9rem;
+    color: #6c4ea0;
+}
+
+/* LINKS DESKTOP */
+.nav-links {
+    display: none; /* escondido no mobile */
+    flex-direction: row;
+    gap: 20px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #b084ff;
+}
+
+/* BOTÃO MENU MOBILE */
+.menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #6c4ea0;
+}
+
+/* MENU LATERAL MOBILE */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 220px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 998;
+}
+
+.mobile-menu a {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #3a2c4c;
+}
+
+.mobile-menu a:hover {
+    color: #b084ff;
+}
+
+/* ======================================
+   HERO
+====================================== */
+.hero {
+    padding: 100px 0 60px; /* considerando navbar fixa */
+    text-align: center;
+}
+
+.hero img.profile {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(108,78,160,0.15);
+    animation: float 4s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    color: #5a4a84;
+    margin-bottom: 15px;
+}
+
+.micro {
+    margin-top: 15px;
+    font-style: italic;
+    color: #9b87b5;
+}
+
+/* ======================================
+   INTRO
+====================================== */
+.intro {
+    padding: 50px 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* ======================================
+   SOBRE
+====================================== */
+.sobre-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 0;
+}
+
+.sobre-img {
+    width: 250px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(108,78,160,0.15);
+}
+
+.sobre-text {
+    max-width: 600px;
+}
+
+.sobre-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* ======================================
+   TERAPIA
+====================================== */
+.terapia-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 0;
+}
+
+.terapia-content.reverse {
+    flex-direction: column;
+}
+
+.terapia-img {
+    width: 250px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(108,78,160,0.15);
+}
+
+.terapia-text {
+    max-width: 600px;
+}
+
+.terapia-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
 .cards {
-    display: grid;
-    gap: 14px;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
 }
 
 .card {
     background: #fff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(108,78,160,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ======================================
+   AREAS DE ATUAÇÃO
+====================================== */
+.areas {
+    padding: 40px 0;
+    background-color: #f9f6fb;
+}
+
+.areas h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.areas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.area-card {
+    background: #fff;
+    padding: 12px 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(108,78,160,0.08);
+    font-weight: 500;
+}
+
+/* ======================================
+   DEPOIMENTOS
+====================================== */
+.depoimentos {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.depoimentos h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dep-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.dep-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f6f0fc;
+    padding: 15px 12px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(108,78,160,0.12); /* sombra mais leve no desktop */
+    font-size: 0.95rem;
+}
+
+.dep-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dep-text p {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.dep-text span {
+    font-weight: bold;
+    color: #8b73b3;
+}
+
+/* ======================================
+   CONTATO
+====================================== */
+.contato {
+    padding: 50px 0;
     text-align: center;
 }
 
-.card h4 {
-    color: #6c5b9c;
-    margin-bottom: 6px;
+/* ======================================
+   FOOTER
+====================================== */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    background: #f3eaff;
+    color: #5a4a84;
 }
 
-/* ================================
-   ANIMAÇÕES
-================================ */
+/* ======================================
+   ANIMAÇÕES ENTRE SECTIONS
+====================================== */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section.fade-in {
+    animation: fadeUp 1s ease forwards;
+}
+
+section.fade-in:nth-of-type(1) { animation-delay: 0.2s; }
+section.fade-in:nth-of-type(2) { animation-delay: 0.4s; }
+section.fade-in:nth-of-type(3) { animation-delay: 0.6s; }
+section.fade-in:nth-of-type(4) { animation-delay: 0.8s; }
+section.fade-in:nth-of-type(5) { animation-delay: 1s; }
+section.fade-in:nth-of-type(6) { animation-delay: 1.2s; }
+
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
 }
 
-/* ================================
-   RESPONSIVO (DESKTOP)
-================================ */
+/* ======================================
+   MOBILE FIRST -> DESKTOP
+====================================== */
 @media (min-width: 768px) {
-    .hero-content, .sobre-content, .terapia-content {
-        flex-direction: row;
-        align-items: center;
-        gap: 40px;
-        justify-content: space-between;
-    }
+    .nav-links { display: flex; }
+    .menu-toggle { display: none; }
+    .mobile-menu { display: none; }
 
-    .hero-text, .sobre-text, .terapia-text {
-        text-align: left;
-        flex: 1;
-    }
+    .sobre-content { flex-direction: row; gap: 50px; align-items: flex-start; }
+    .terapia-content.reverse { flex-direction: row-reverse; gap: 50px; align-items: flex-start; }
+    .cards { flex-direction: row; justify-content: space-between; }
+    .areas-list { flex-direction: row; justify-content: space-between; max-width: 800px; }
+    .dep-cards { flex-direction: row; justify-content: space-between; }
+    .dep-card { flex: 1; box-shadow: 0 2px 6px rgba(108,78,160,0.05); } /* sombra leve no desktop */
+}
 
-    .hero .profile, .sobre-img, .terapia-img {
-        width: 300px;
-        height: 300px;
-    }
-
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media (min-width: 1024px) {
+    .hero-text h2 { font-size: 2.2rem; }
+    .sobre-text, .terapia-text { max-width: 650px; }
+    .dep-card { max-width: 600px; }
 }
